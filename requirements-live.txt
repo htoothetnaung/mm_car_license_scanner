@@ -1,0 +1,4 @@
+streamlit-webrtc==0.47.9
+# install a prebuilt AV wheel (no local C/C++ compile)
+av>=12,<13
+setuptools<81

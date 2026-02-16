@@ -1,0 +1,11 @@
+ultralytics==8.0.114
+setuptools<81
+pandas==2.0.2
+opencv-python==4.6.0.66
+numpy==1.24.3
+scipy==1.10.1
+easyocr==1.7.0
+filterpy==1.4.5
+streamlit==1.32.2
+paddleocr==2.7.3
+imageio-ffmpeg==0.6.0
