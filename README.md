@@ -1,32 +1,68 @@
-# automatic-number-plate-recognition-python-yolov8
+# Myanmar Car License Scanner
 
-<p align="center">
-<a href="https://www.youtube.com/watch?v=fyJB1t0o0ms">
-    <img width="600" src="https://utils-computervisiondeveloper.s3.amazonaws.com/thumbnails/with_play_button/anpr_yolo2.jpg" alt="Watch the video">
-    </br>Watch on YouTube: Automatic number plate recognition with Python, Yolov8 and EasyOCR !
-</a>
-</p>
+This repository contains a computer vision pipeline for vehicle and license plate detection, OCR, and result visualization on Myanmar road videos.
 
-## data
+It is developed as a **Computer Vision coursework project for CS-8117**.
 
-The video I used in this tutorial can be downloaded [here](https://www.pexels.com/video/traffic-flow-in-the-highway-2103099/).
+## Project Overview
 
-## models
+The project performs end-to-end automatic number plate recognition (ANPR):
 
-A Yolov8 pretrained model was used to detect vehicles.
+- Detect vehicles in frames.
+- Detect license plates for tracked vehicles.
+- Read plate text with OCR.
+- Visualize and export results for analysis.
 
-A licensed plate detector was used to detect license plates. The model was trained with Yolov8 using [this dataset](https://universe.roboflow.com/roboflow-universe-projects/license-plate-recognition-rxg4e/dataset/4) and following this [step by step tutorial on how to train an object detector with Yolov8 on your custom data](https://github.com/computervisioneng/train-yolov8-custom-dataset-step-by-step-guide). 
+## Main Components
 
-The trained model is available in my [Patreon](https://www.patreon.com/ComputerVisionEngineer).
+- `main.py`: batch/offline processing pipeline.
+- `app.py`: Streamlit interface for interactive testing.
+- `util.py`: helper functions used across the pipeline.
+- `visualize.py`: output visualization utilities.
+- `benchmark_latency.py`: latency benchmarking utilities.
+- `add_missing_data.py`: post-processing/interpolation helper.
 
-## dependencies
+## Models
 
-The sort module needs to be downloaded from [this repository](https://github.com/abewley/sort) as mentioned in the [video](https://youtu.be/fyJB1t0o0ms?t=1120).
+Pretrained and exported detector models are provided in the repository:
 
-## image UI (upload + OCR)
+- YOLO model files at project root (`yolov8n.pt`, `yolov8n.onnx`).
+- License plate detector models in `models/`.
 
-Run the Streamlit app to upload a photo and extract plate text:
+## Tracking
+
+The repository includes the `sort/` directory as part of this coursework project, since tracking is an important part of the full ANPR pipeline.
+
+## Setup
+
+1. Create and activate a Python environment.
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+For live/app-specific dependencies:
+
+```bash
+pip install -r requirements-live.txt
+```
+
+## Run
+
+Run the Streamlit app:
 
 ```bash
 streamlit run app.py
 ```
+
+Run the main processing script:
+
+```bash
+python main.py
+```
+
+## Notes
+
+- Large media files and generated outputs are ignored through `.gitignore`.
+- If needed, update model paths in scripts to match your local setup.
